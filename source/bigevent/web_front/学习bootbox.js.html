@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/bootstrap.min.css">
+</head>
+<body>
+    <pre>
+
+        bootbox.js是依赖于jquery.js,bootstrap.js, bootstrap.css.
+        它提供更方便的alert,confirm
+
+    </pre>
+    <script src="./js/jquery-1.12.4.min.js"></script>
+    <script src="./js/bootstrap.min.js"></script>
+
+    <script src="./js/bootbox.min.js"></script>
+    <script>
+    //   bootbox.alert("This is the default alert!");
+
+    bootbox.confirm("你确定要删除吗？", function(result){ 
+        if(result){
+            console.log("做删除操作")
+        } else {
+            console.log("已取消")
+        }
+    });
+    </script>
+</body>
+</html>

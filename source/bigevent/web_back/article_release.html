@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>文章列表</title>
+    <link rel="stylesheet" href="js/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/iconfont.css">
+    <link rel="stylesheet" href="css/main.css">
+    <link type="text/css" rel="stylesheet" href="js/jedate/css/jedate.css">
+    <script src="js/jquery-1.12.4.min.js"></script>
+    <script src="js/jedate/js/jedate.js"></script>
+    <script src="js/tinymce/js/tinymce/tinymce.min.js"></script>
+    <script src="js/tinymce/js/tinymce_setup.js"></script>
+</head>
+
+<body>
+    <div class="container-fluid">
+        <div class="common_title">
+            写文章
+        </div>
+        <div class="container-fluid common_con">
+            <form class="form-horizontal article_form" id="myform">
+                <div class="form-group">
+                    <label for="inputEmail3" class="col-sm-2 control-label">文章标题：</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" name="title" id="inputEmail3" placeholder="文章标题">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="inputPassword3" class="col-sm-2 control-label">文章封面：</label>
+                    <div class="col-sm-10">
+                        <input type="file" name="cover" id="coverImg">
+                    </div>
+                    <div>
+                        <img id="previewImg" style="height:200px;" src="https://inews.gtimg.com/newsapp_bt/0/10817911760/1000" alt="">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="inputEmail3" class="col-sm-2 control-label">文章类别：</label>
+                    <div class="col-sm-4">
+                        <select class="form-control" name="type" id="categoryContainer">
+                            <!-- <option value="1">科学</option> -->
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="inputEmail3" class="col-sm-2 control-label">发布时间：</label>
+                    <div class="col-sm-4">
+
+                        <div class="input-group">
+                            <input type="text" class="form-control" name="date" placeholder="YYYY-MM-DD" id="dateinput">
+                            <span class="input-group-btn">
+                                <button class="btn btn-default" type="button"
+                                    onclick="jeDate('#dateinput',{trigger:false,format: 'YYYY-MM-DD'})"><i
+                                        class="iconfont icon-icondate"></i></button>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="inputEmail3" class="col-sm-2 control-label">文章内容：</label>
+                    <div class="col-sm-10">
+                        <textarea class="form-control" id="rich_content" name="content" placeholder="文章内容">
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda fugiat illo nihil molestias ab. Laborum eius non atque, totam sapiente quae obcaecati assumenda ratione inventore pariatur maiores, qui libero delectus.
+                        </textarea>
+
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-offset-2 col-sm-10">
+                        <button type="button" class="btn btn-success" id="btnAdd">发布</button>
+                        <button type="submit" class="btn btn-default">存为草稿</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <script src="./js/utils/config.js"></script>
+    <script src="./js/utils/category.js"></script>
+    <script src="./js/utils/article.js"></script>
+    <script src="./js/template-web.js"></script>
+    <!-- //定义模板 -->
+    <!-- {{each 数组 当前元素 当前下标}} -->
+    <script id="temp_cate" type="text/html">
+        {{each data item}}
+            <option value="{{item.id}}">{{item.name}}</option>
+        {{/each}}
+    </script>
+    <script>
+        // 显示文章类别
+        // 1. 发请求，拿数据
+        // 2. 模板引擎，显示数据
+        category.show(function(res){
+            // console.log((res));
+            // res = {
+            //     code: 200,
+            //     data: []
+            // }
+            // var htmlStr = template(id，数据)
+            if(res.code === 200){
+                var htmlStr = template('temp_cate',res)
+                console.log(htmlStr);
+                $('#categoryContainer').html( htmlStr ) 
+            }
+        })
+        
+        $('#coverImg').change(function(){
+            console.dir(this);
+            var file = this.files[0];
+            if(file){
+                // 选中文件
+
+                // 生成一个临时的地址;
+                var url = URL.createObjectURL( file );
+                console.log(url);
+                
+                // 把地址给 #previewImg
+                $('#previewImg').prop('src', url)
+            }
+        })
+        // 发布文章
+        $('#btnAdd').click(function(){
+            // 收集表单信息
+            // var fd = new FormData( form dom节点)
+             var fd = new FormData( document.getElementById('myform'));
+
+             console.log(fd);
+             console.log(fd.get('title'));
+
+             // 手动添加一个参数
+             fd.append('state', '已发布')
+
+             // 如果要获取富文本编辑中的内容，
+             // 则需要调用它自己的api，而不能直接从textarea中取
+             // fd.set(key,value); 会覆盖fd中的key
+             fd.set('content', tinyMCE.activeEditor.getContent())
+
+            // 发请求，调用接口.
+            // 在article.js中准备一个添加文章的方法
+            article.add(fd, function(res){
+                console.log(res);
+                if(res.code === 201){
+                    alert('添加成功')
+                } else {
+                    alert(res.msg)
+                }
+            })
+        })
+    </script>
+
+</body>
+
+</html>

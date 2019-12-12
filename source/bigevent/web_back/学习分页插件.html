@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="./js/bootstrap/css/bootstrap.min.css">
+</head>
+<body>
+
+    <ul id="pagination-demo" class="pagination-sm"></ul>
+
+
+    <script src="./js/jquery-1.12.4.min.js"></script>
+    <script src="./js/jquery.twbsPagination.js"></script>
+    <script>
+        // 它是基于jquery.js, boostrap.css
+        $('#pagination-demo').twbsPagination(
+            {
+                totalPages: 43,
+                visiblePages: 7,
+                first: '首页',
+                prev: '上一页',
+                next: '下一页',
+                last: '尾页',
+                onPageClick: function (event, page) {
+                    console.log(event,page);
+                    
+                }
+            }
+        );
+
+    </script>
+</body>
+</html>

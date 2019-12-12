@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        var arr = [
+                { id: 1, name: "科学", slug: "kexue" },
+                { id: 2, name: "八卦", slug: "bagua" },
+                { id: 4, name: "新闻", slug: "news" },
+                { id: 5, name: "奇异", slug: "outhome" },
+                { id: 8, name: "军事", slug: "eyekillyou" },
+                { id: 14, name: "情感", slug: "情感" },
+                { id: 1574326875581, name: "aaa", slug: "bbbbddd" }]
+        var typeID = 8;
+
+        // 目标：在arr中，找出是否有一个元素它的id与typeID相等？如果有，则取出它的name
+        // 格式：
+        // var rs = arr.find(function(item,index,self){
+        //     // 对于每一个元素进行检测，如果能够return true，则
+        //     // 返回当前元素.
+        //  找不到，就返加undefined
+        //     if(XXXXXX){
+        //         return true
+        //     }
+        // })
+        var rs = arr.find(function(item,index,self){
+            console.log(item,index,self);
+            // if(index === 2){
+            if(item.id === typeID){
+                return true
+            }
+            
+        })
+        console.log(rs.name);
+        
+        
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <pre>
+        day.js是一个专业嘀，用来处理时间 ，日期的工具。
+        1. 引入 day.js
+        2. 调用它的方法
+        3. 语言
+         （1）引入语言包
+          (2) 设置语言包
+        4. 引入插件
+          它的自己的功能有限，可以通过引入插件来扩展
+        （1）引入插件文件
+         (2) 调用方法
+    </pre>
+    <script src="./js/dayjs/dayjs.min.js"></script>
+    <script src="./js/dayjs/zh_cn.js"></script>
+    <script src="./js/dayjs/relative.min.js"></script>
+    <script>
+        dayjs.locale('zh-cn') ; // 全局设置，中文
+        
+        // 应用插件
+        //  格式：dayjs.extend(dayjs_plugin_插件名);
+        dayjs.extend(dayjs_plugin_relativeTime);
+        console.log( dayjs().add(10,'day').format("YYYY-MM-DD dddd") )
+        console.log( dayjs(1574590762413).toNow() )
+    </script>
+</body>
+</html>

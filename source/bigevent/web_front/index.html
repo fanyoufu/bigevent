@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>大事件-首页</title>
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/main.css">
+</head>
+
+<body>
+    <div class="header">
+        <a href="#" class="logo fl"><img src="images/logo.png" alt="logo"></a>
+        <div class="search_form fl">
+            <input type="text" class="search_txt" placeholder="黑洞照片">
+            <button class="search_btn"><i class="fa fa-search"></i></button>
+        </div>
+        <div class="link_info fr">
+            <a href="#"><i class="fa fa-angle-right"></i>&nbsp;&nbsp;网站地图</a><br>
+            <a href="#"><i class="fa fa-angle-right"></i>&nbsp;&nbsp;招聘信息</a>
+        </div>
+    </div>
+
+    <div class="menu_con">
+        <div class="menu">
+            <div class="menu_collapse fl">
+                <a href="javascript:;" class="level_one"><i class="fa fa-list-ul"></i>全部分类</a>
+                <ul class="level_two" id="level_two">
+                   
+                </ul>
+            </div>
+            <ul class="left_menu fl" id="left_menu">
+            </ul>
+            <ul class="right_menu fr">
+                <li><a href="#">科技专题</a></li>
+                <li><a href="#">财经专题</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="main_con clearfix">
+        <div class="left_con">
+            <ul class="focus_list" id="focus_list">
+            </ul>
+
+            <div class="common_title">
+                <h3><i class="fa fa-edit"></i> 最新资讯</h3>
+                <a href="#" class="more"><i class="fa fa-angle-double-right"></i></a>
+            </div>
+            <div id="lastest">
+
+            </div>
+
+        </div>
+        <div class="right_con">
+            <div class="common_wrap">
+                <h3><i class="fa fa-bar-chart"></i> 一周热门排行</h3>
+                <ul class="content_list" id="rank_list">
+
+                </ul>
+            </div>
+            <div class="common_wrap">
+                <h3><i class="fa fa-commenting-o"></i> 最新评论</h3>
+                <ul class="content_list comment_list" id="comment_list">
+                    <li>
+                        <span>山</span>
+                        <b><em>山治</em> 9个月前(08-14)说:</b>
+                        <strong>挺会玩的</strong>
+                    </li>
+                    <li>
+                        <span>丽</span>
+                        <b><em>丽丽</em> 9个月前(08-14)说:9个月前(08-14)说:9个月前(08-14)说:</b>
+                        <strong>挺会玩的挺会玩的挺会玩的挺会玩的</strong>
+                    </li>
+                    <li>
+                        <span>R</span>
+                        <b><em>Rechael</em> 9个月前(08-14)说:</b>
+                        <strong>挺会玩的</strong>
+                    </li>
+                    <li>
+                        <span>J</span>
+                        <b><em>John</em> 9个月前(08-14)说:</b>
+                        <strong>挺会玩的</strong>
+                    </li>
+                    <li>
+                        <span>段</span>
+                        <b><em>段正淳</em> 9个月前(08-14)说:</b>
+                        <strong>挺会玩的</strong>
+                    </li>
+                    <li>
+                        <span>乔</span>
+                        <b><em>乔峰</em> 9个月前(08-14)说:</b>
+                        <strong>挺会玩的</strong>
+                    </li>
+                </ul>
+            </div>
+            <div class="common_wrap">
+                <h3><i class="fa fa-bullseye"></i> 焦点关注</h3>
+                <ul class="content_list guanzhu_list">
+                    <li><a href="#">神奇的水滴摄影，泡泡中的世界泡泡中的世界</a></li>
+                    <li><a href="#">神奇的水滴摄影，泡泡中的世界</a></li>
+                    <li><a href="#">神奇的水滴摄影，泡泡中的世界</a></li>
+                    <li><a href="#">神奇的水滴摄影，泡泡中的世界</a></li>
+                    <li><a href="#">神奇的水滴摄影，泡泡中的世界</a></li>
+                    <li><a href="#">神奇的水滴摄影，泡泡中的世界</a></li>
+                    <li><a href="#">神奇的水滴摄影，泡泡中的世界</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer clearfix">
+        <div class="foot_link">
+            <a href="#">关于我们</a>
+            <span>|</span>
+            <a href="#">联系我们</a>
+            <span>|</span>
+            <a href="#">招聘人才</a>
+            <span>|</span>
+            <a href="#">友情链接</a>		
+        </div>
+        <p>CopyRight © 2019 深圳大事件信息技术股份有限公司   All Rights Reserved</p>
+        <p>电话：0755-****888    粤ICP备*******8号</p>
+    </div>
+
+    <script type="tet/html" id="temp_lastest">
+        {{each data item}}
+            <div class="common_news_list">
+                <a href="./article.html?id={{item.id}}" class="list_pic"><img src="{{item.cover}}" alt="{{item.title}}"></a>
+                <h4><a href="./article.html?id={{item.id}}">{{item.title}}</a></h4>
+                <p>{{item.intro}}</p>
+                <div class="new_info">
+                    <span>标签：{{item.type}}&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;<i class="fa fa-eye"></i>&nbsp;阅读({{item.read}}
+                        )&nbsp;&nbsp;&nbsp;<i class="fa fa-commenting"></i>&nbsp;评论({{item.comment}})</span>
+                    <b>发布于 {{item.date}}</b>
+                </div>
+            </div>
+        {{/each}}
+    </script>
+    <script type="text/html" id="temp_cate">
+        {{each data item}}
+            <li><a href="./list.html?id={{item.id}}">{{item.name}}</a></li>
+        {{/each}}
+    </script>
+
+    <script id="temp_rank" type="text/html">
+        {{each data item idx}}
+        <li>
+            {{if idx==0}}
+                <span class="first">
+            {{else if idx==1}}
+                <span class="second">
+            {{else if idx==2}}
+                <span class="third">
+            {{else}}
+                <span>
+            {{/if}}
+            {{idx+1}}</span><a href="./article.html?id={{item.id}}">{{item.title}}</a></li>        
+        {{/each}}
+    </script>
+
+    <script id="temp_comment" type="text/html">
+        {{each data item}}
+            <li>
+                <span>{{item.name.substr(0,1)}}</span>
+                <b><em>{{item.name}}</em><i style='float:right;font-style:normal;'>{{item.dt}}</i></b>
+                <strong>{{item.content}}</strong>
+            </li>      
+        {{/each}}
+    </script>
+    <!-- 如果是第一张图，则要给一个特殊的class -->
+    <!-- 通过 idx来判断是否是第一张 -->
+    <script type="text/html" id="temp_foucs">
+        {{each data item idx}}
+            {{if idx == 0}}
+                <li class="first">
+                    <a href="article.html?id={{item.id}}"  target="_blank"><img src="{{item.cover}}" alt="{{item.title}}"></a>
+                    <p>{{item.title}}</p>
+                </li>
+            {{else}}
+                <li>
+                    <a href="article.html?id={{item.id}}" target="_blank"><img src="{{item.cover}}" alt="{{item.title}}"></a>
+                    <p>{{item.title}}</p>
+                </li>
+            {{/if}}
+        {{/each}}
+    </script>
+    <script src="./js/jquery-1.12.4.min.js"></script>
+    <script src="./js/utils/config.js"></script>
+    <script src="./js/utils/category.js"></script>
+    <script src="./js/utils/article.js"></script>
+    <script src="./js/utils/comment.js"></script>
+    <script src="./js/dayjs/dayjs.min.js"></script>
+
+    <script src="./js/template-web.js"></script>
+    <script>
+        article.getRank('',res=>{
+          if(res.code === 200)
+            var htmlStr = template("temp_rank",res);
+            $("#rank_list").html( htmlStr )
+        })
+
+        // 获取文章类别，并显示
+        category.show(function(res){
+            console.log(res);
+            // 模板引擎来 渲染数据
+            var htmlStr = template("temp_cate",res);
+            $("#left_menu").html( htmlStr )
+            $("#level_two").html('<li class="up"></li>' + htmlStr )
+        })
+        
+        // 获取5条新闻
+        article.getFiveFocus(res=>{
+            console.log(res);
+            // 使用模板引擎 
+            var htmlStr = template("temp_foucs",res)
+            $("#focus_list").html(htmlStr)
+        })
+
+        // 获取5条新闻
+        article.getLastest(res=>{
+            console.log(res);
+            // 使用模板引擎 
+            var htmlStr = template("temp_lastest",res)
+            $("#lastest").html(htmlStr)
+        })
+
+        // 获取最新评论
+        comment.get_lastest(res=>{
+            if(res.code === 200){
+                res.data.forEach(it=>{
+                    it.dt = dayjs(it.dt).format('YYYY-MM-DD')
+                })
+                var htmlStr = template("temp_comment",res)
+                $("#comment_list").html(htmlStr)
+            } 
+        })
+    </script>
+
+</body>
+
+</html>

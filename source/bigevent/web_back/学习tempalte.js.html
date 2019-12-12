@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script src="./js/template-web.js"></script>
+    <!-- // 定义模板
+    在模板中：
+    {{ }} 这个格式是tempalte-web要求的。
+    {{name}} ======> console.log(res.name)
+    name 就是对象当中的属性名。
+
+    {{each 数组 当前元素 当前下标}}
+     -->
+    <script type="text/html" id="temp">
+        <h2>我是{{name}}</h2>
+        <p>{{name}}----{{age}}</p>
+        <ul>
+            <li>{{hobby}}</li>
+        </ul>
+        <ul>
+            {{each hobby item idx}}
+                <li>{{idx+1}}:  {{item}} </li>
+            {{/each}}
+        </ul>
+    </script>
+    <script>
+        // res就是从后端取回来的数据
+        var res = {name:"小坤",age:30,hobby:['唱','跳','rap','篮球','看书']}
+        // var htmlStr = template(模板id,数据)
+        var htmlStr = template('temp',res)
+
+        console.log(htmlStr);
+        
+    </script>
+</body>
+</html>

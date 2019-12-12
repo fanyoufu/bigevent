@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>大事件-列表页</title>
+    <link rel="stylesheet" type="text/css" href="css/reset.css">
+    <link rel="stylesheet" href="css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="css/main.css">
+
+</head>
+
+<body>
+    <div class="header">
+        <a href="./index.html" class="logo fl"><img src="images/logo.png" alt="logo"></a>
+        <div class="search_form fl">
+            <input type="text" class="search_txt" placeholder="黑洞照片">
+            <button class="search_btn"><i class="fa fa-search"></i></button>
+        </div>
+        <div class="link_info fr">
+            <a href="#"><i class="fa fa-angle-right"></i>&nbsp;&nbsp;网站地图</a><br>
+            <a href="#"><i class="fa fa-angle-right"></i>&nbsp;&nbsp;招聘信息</a>
+        </div>
+    </div>
+
+    <div class="menu_con">
+        <div class="menu">
+            <div class="menu_collapse fl">
+                <a href="javascript:;" class="level_one"><i class="fa fa-list-ul"></i>全部分类</a>
+                <ul class="level_two" id="level_two">
+                    <li class="up"></li>
+                    <li><a href="#">最 新</a></li>
+                    <li><a href="#">科 技</a></li>
+                    <li><a href="#">股 市</a></li>
+                    <li><a href="#">商 品</a></li>
+                    <li><a href="#">外 汇</a></li>
+                    <li><a href="#">公 司</a></li>
+                </ul>
+            </div>
+            <ul class="left_menu fl" id="left_menu">
+                <li><a href="#">最 新</a></li>
+                <li><a href="#">科 技</a></li>
+                <li><a href="#">股 市</a></li>
+                <li><a href="#">商 品</a></li>
+                <li><a href="#">外 汇</a></li>
+                <li><a href="#">公 司</a></li>
+            </ul>
+            <ul class="right_menu fr">
+                <li><a href="#">科技专题</a></li>
+                <li><a href="#">财经专题</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="main_con clearfix">
+        <div class="left_con setfr">
+
+            <div class="list_title">
+                <h3 id="cate_title">科 技</h3>
+            </div>
+            <div id="common_news_list">
+
+            </div>
+            <!-- <div class="common_news_list">
+                <a href="#" class="list_pic"><img src="images/pic09.jpg" alt=""></a>
+                <h4><a href="#">亚马逊金融试水中国？背后却是和华尔街的“金融战争” </a></h4>
+                <p>亚马逊抛弃了中国的买家们，却难以割舍庞大的卖家市场，有消息指出亚马逊中国将针对中国庞大的卖家群体推出一项贷款推荐计划。在连续对印度、墨西哥等新兴市场大力推广线上支付服务后，亚马逊金融试水进军中国市场的信号终于被放出。
+                </p>
+                <div class="new_info">
+                    <span>标签：财经&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;<i class="fa fa-eye"></i>&nbsp;阅读( 5
+                        )&nbsp;&nbsp;&nbsp;<i class="fa fa-commenting"></i>&nbsp;评论( 10 )</span>
+                    <b>发布于 2018-08-30 12:18:58</b>
+                </div>
+            </div>
+
+            <div class="common_news_list">
+                <a href="#" class="list_pic"><img src="images/pic03.jpg" alt=""></a>
+                <h4><a href="#">马斯克的新花样？连接人脑和电脑的初创公司又筹了一笔钱,马斯克的新花样？连接人脑和电脑的初创公司又筹了一笔钱</a></h4>
+                <p>亚马逊抛弃了中国的买家们，却难以割舍庞大的卖家市场，有消息指出亚马逊中国将针对中国庞大的卖家群体推出一项贷款推荐计划。在连续对印度、墨西哥等新兴市场大力推广线上支付服务后，亚马逊金融试水进军中国市场的信号终于被放出。
+                </p>
+                <div class="new_info">
+                    <span>标签：财经&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;<i class="fa fa-eye"></i>&nbsp;阅读( 5
+                        )&nbsp;&nbsp;&nbsp;<i class="fa fa-commenting"></i>&nbsp;评论( 10 )</span>
+                    <b>发布于 2018-08-30 12:18:58</b>
+                </div>
+            </div>
+
+            <div class="common_news_list">
+                <a href="#" class="list_pic"><img src="images/pic05.jpg" alt=""></a>
+                <h4><a href="#">马斯克的新花样？连接人脑和电脑的初创公司又筹了一笔钱</a></h4>
+                <p>亚马逊抛弃了中国的买家们，却难以割舍庞大的卖家市场，有消息指出亚马逊中国将针对中国庞大的卖家群体推出一项贷款推荐计划。在连续对印度、墨西哥等新兴市场大力推广线上支付服务后，亚马逊金融试水进军中国市场的信号终于被放出。
+                </p>
+                <div class="new_info">
+                    <span>标签：财经&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;<i class="fa fa-eye"></i>&nbsp;阅读( 5
+                        )&nbsp;&nbsp;&nbsp;<i class="fa fa-commenting"></i>&nbsp;评论( 10 )</span>
+                    <b>发布于 2018-08-30 12:18:58</b>
+                </div>
+            </div>
+
+            <div class="common_news_list">
+                <a href="#" class="list_pic"><img src="images/pic07.jpg" alt=""></a>
+                <h4><a href="#">马斯克的新花样？连接人脑和电脑的初创公司又筹了一笔钱</a></h4>
+                <p>亚马逊抛弃了中国的买家们，却难以割舍庞大的卖家市场，有消息指出亚马逊中国将针对中国庞大的卖家群体推出一项贷款推荐计划。在连续对印度、墨西哥等新兴市场大力推广线上支付服务后，亚马逊金融试水进军中国市场的信号终于被放出。
+                </p>
+                <div class="new_info">
+                    <span>标签：财经&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;<i class="fa fa-eye"></i>&nbsp;阅读( 5
+                        )&nbsp;&nbsp;&nbsp;<i class="fa fa-commenting"></i>&nbsp;评论( 10 )</span>
+                    <b>发布于 2018-08-30 12:18:58</b>
+                </div>
+            </div>
+
+            <div class="common_news_list">
+                <a href="#" class="list_pic"><img src="images/pic10.jpg" alt=""></a>
+                <h4><a href="#">马斯克的新花样？连接人脑和电脑的初创公司又筹了一笔钱</a></h4>
+                <p>亚马逊抛弃了中国的买家们，却难以割舍庞大的卖家市场，有消息指出亚马逊中国将针对中国庞大的卖家群体推出一项贷款推荐计划。在连续对印度、墨西哥等新兴市场大力推广线上支付服务后，亚马逊金融试水进军中国市场的信号终于被放出。
+                </p>
+                <div class="new_info">
+                    <span>标签：财经&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;<i class="fa fa-eye"></i>&nbsp;阅读( 5
+                        )&nbsp;&nbsp;&nbsp;<i class="fa fa-commenting"></i>&nbsp;评论( 10 )</span>
+                    <b>发布于 2018-08-30 12:18:58</b>
+                </div>
+            </div>
+
+            <div class="common_news_list">
+                <a href="#" class="list_pic"><img src="images/pic04.jpg" alt=""></a>
+                <h4><a href="#">马斯克的新花样？连接人脑和电脑的初创公司又筹了一笔钱</a></h4>
+                <p>亚马逊抛弃了中国的买家们，却难以割舍庞大的卖家市场，有消息指出亚马逊中国将针对中国庞大的卖家群体推出一项贷款推荐计划。在连续对印度、墨西哥等新兴市场大力推广线上支付服务后，亚马逊金融试水进军中国市场的信号终于被放出。
+                </p>
+                <div class="new_info">
+                    <span>标签：财经&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;<i class="fa fa-eye"></i>&nbsp;阅读( 5
+                        )&nbsp;&nbsp;&nbsp;<i class="fa fa-commenting"></i>&nbsp;评论( 10 )</span>
+                    <b>发布于 2018-08-30 12:18:58</b>
+                </div>
+            </div> -->
+
+
+
+            <ul id="pagination" class="page pagination pagination-sm">
+            </ul>
+
+
+        </div>
+        <div class="right_con setfl">
+            <div class="common_wrap">
+                <h3><i class="fa fa-bar-chart"></i> 一周热门排行</h3>
+
+                <ul class="content_list"  id="rank_list">
+                   
+                </ul>
+            </div>
+            <div class="common_wrap">
+                <h3><i class="fa fa-commenting-o"></i> 最新评论</h3>
+                <ul class="content_list comment_list">
+                    <li>
+                        <span>山</span>
+                        <b><em>山治</em> 9个月前(08-14)说:</b>
+                        <strong>挺会玩的</strong>
+                    </li>
+                    <li>
+                        <span>丽</span>
+                        <b><em>丽丽</em> 9个月前(08-14)说:9个月前(08-14)说:9个月前(08-14)说:</b>
+                        <strong>挺会玩的挺会玩的挺会玩的挺会玩的</strong>
+                    </li>
+                    <li>
+                        <span>R</span>
+                        <b><em>Rechael</em> 9个月前(08-14)说:</b>
+                        <strong>挺会玩的</strong>
+                    </li>
+                    <li>
+                        <span>J</span>
+                        <b><em>John</em> 9个月前(08-14)说:</b>
+                        <strong>挺会玩的</strong>
+                    </li>
+                    <li>
+                        <span>段</span>
+                        <b><em>段正淳</em> 9个月前(08-14)说:</b>
+                        <strong>挺会玩的</strong>
+                    </li>
+                    <li>
+                        <span>乔</span>
+                        <b><em>乔峰</em> 9个月前(08-14)说:</b>
+                        <strong>挺会玩的</strong>
+                    </li>
+                </ul>
+            </div>
+            <div class="common_wrap">
+                <h3><i class="fa fa-bullseye"></i> 焦点关注</h3>
+                <ul class="content_list guanzhu_list">
+                    <li><a href="#">神奇的水滴摄影，泡泡中的世界泡泡中的世界</a></li>
+                    <li><a href="#">神奇的水滴摄影，泡泡中的世界</a></li>
+                    <li><a href="#">神奇的水滴摄影，泡泡中的世界</a></li>
+                    <li><a href="#">神奇的水滴摄影，泡泡中的世界</a></li>
+                    <li><a href="#">神奇的水滴摄影，泡泡中的世界</a></li>
+                    <li><a href="#">神奇的水滴摄影，泡泡中的世界</a></li>
+                    <li><a href="#">神奇的水滴摄影，泡泡中的世界</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer clearfix">
+        <div class="foot_link">
+            <a href="#">关于我们</a>
+            <span>|</span>
+            <a href="#">联系我们</a>
+            <span>|</span>
+            <a href="#">招聘人才</a>
+            <span>|</span>
+            <a href="#">友情链接</a>
+        </div>
+        <p>CopyRight © 2019 深圳大事件信息技术股份有限公司 All Rights Reserved</p>
+        <p>电话：0755-****888 粤ICP备*******8号</p>
+    </div>
+    <script type="text/html" id="temp_cate">
+        {{each data item}}
+            {{if cur == item.id}}
+            <li><a href="./list.html?id={{item.id}}" class="cur">{{item.name}}</a></li>
+            {{else}}
+            <li><a href="./list.html?id={{item.id}}">{{item.name}} </a></li>
+
+            {{/if}}
+        {{/each}}
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/lazyload@2.0.0-rc.2/lazyload.js"></script>
+
+    <script src="./js/jquery-1.12.4.min.js"></script>
+
+    <script src="./js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="./js/jquery.twbsPagination.js"></script>
+
+    <script src="./js/utils/config.js"></script>
+    <script src="./js/utils/article.js"></script>
+    <script src="./js/utils/category.js"></script>
+
+    <script src="./js/template-web.js"></script>
+
+    <script id="temp_rank" type="text/html">
+        {{each data item idx}}
+        <li>
+            {{if idx==0}}
+                <span class="first">
+            {{else if idx==1}}
+                <span class="second">
+            {{else if idx==2}}
+                <span class="third">
+            {{else}}
+                <span>
+            {{/if}}
+            {{idx+1}}</span><a href="./article.html?id={{item.id}}">{{item.title}}</a></li>        
+        {{/each}}
+    </script>
+    <script id="temp_list" type="text/html">
+        {{each data item}}
+        <div class="common_news_list">
+            <a href="./article.html?id={{item.id}}" class="list_pic">
+                <img class="lazyload" src="images/timg.gif" data-src="{{item.cover}}" alt="{{item.title}}">
+            </a>
+            <h4><a href="./article.html?id={{item.id}}">{{item.title}}</a></h4>
+            <p>{{item.intro}}</p>
+            <div class="new_info">
+                <span>标签：{{item.type}}&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;<i class="fa fa-eye"></i>&nbsp;阅读({{item.read}}
+                    )&nbsp;&nbsp;&nbsp;<i class="fa fa-commenting"></i>&nbsp;评论({{item.comment}})</span>
+                <b>发布于 {{item.date}}</b>
+            </div>
+        </div>
+        {{/each}}
+    </script>
+
+    <script>
+        
+
+
+
+        // $(function () {
+
+            var curPage = 1
+            var curTotalPage = -1;
+            var id = location.search.substr(4);
+
+            function getAndShow() {
+                article.getList({ type: id, page: curPage }, function (res) {
+                    if (res.code === 200) {
+                        var htmlStr = template('temp_list', res)
+                        console.log(htmlStr);
+                        $('#common_news_list').html(htmlStr);
+                        lazyload()
+                        if (curTotalPage != res.pages) {
+                            $('#pagination').twbsPagination('destroy');
+                            curTotalPage = res.pages
+                        }
+                        $("#pagination").twbsPagination({
+                            // startPage:1,
+                            // page:curPage,
+                            totalPages: res.pages,
+                            initiateStartPageClick: false,
+                            visiblePages: 7,
+                            first: '首页',
+                            prev: '上一页',
+                            next: '下一页',
+                            last: '尾页',
+                            onPageClick: function (event, page) {
+                                // 点击页码：
+                                // 1. 更新全局变量
+                                // console.log(event,page);
+                                curPage = page
+                                // 2. 重新请求
+                                getAndShow()
+                            }
+                        });
+                    }
+                })
+            }
+            
+            article.getRank({type:id},res=>{
+                if(res.code === 200) {
+                    var htmlStr = template("temp_rank",res);
+                    $("#rank_list").html( htmlStr )
+                }
+            })
+
+            
+            // // 获取文章类别，并显示
+            category.show(res=>{
+                if(res.code === 200){
+                    // 模板引擎来 渲染数据
+                    res.cur = id
+            var htmlStr = template("temp_cate",res);
+            console.log(htmlStr);
+            $("#left_menu").html( htmlStr )
+            $("#level_two").html('<li class="up"></li>' + htmlStr )
+                    let rs = res.data.find(it=>it.id == id)
+                    if(!rs){
+                        return;
+                    }
+                    $('#cate_title').html(rs.name)
+                    getAndShow()
+
+
+                }
+            })
+        // });
+    </script>
+</body>
+
+</html>

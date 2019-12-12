@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>大事件-后台登录页</title>
+    <link rel="stylesheet" type="text/css" href="css/reset.css">
+    <link rel="stylesheet" type="text/css" href="css/iconfont.css">
+    <link rel="stylesheet" type="text/css" href="css/main.css">
+    <link rel="stylesheet" href="./js/bootstrap/css/bootstrap.min.css">
+</head>
+
+<body>
+    <div class="main_wrap">
+        <div class="header">
+            <a href="#" class="logo"><img src="images/logo.png" alt=""></a>
+            <div class="copyright">CopyRight © 2019 深圳百秀信息技术股份有限公司<br>All Rights Reserved</div>
+        </div>
+
+        <div class="login_form_con">
+            <div class="login_title"></div>
+            <form class="login_form">
+                <i class="iconfont icon-user"></i>
+                <i class="iconfont icon-key"></i>
+                <input id="myName" type="text" class="input_txt" placeholder="用户名">
+                
+                <input id="myPassword" type="password" class="input_pass" placeholder="密码">
+                <input type="button" id="btnLogin" class="input_sub" value="登 录">
+            </form>
+        </div>
+    </div>
+
+    <div id="myModal" class="modal fade" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">系统提示</h4>
+            </div>
+            <div class="modal-body">
+                <p id="msgInfo">不能为空</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
+            </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+
+    <script src="./js/jquery-1.12.4.min.js"></script>
+    <script src="./js/bootstrap/js/bootstrap.min.js"></script>
+    
+    <script src="./js/utils/config.js"></script>
+    <script src="./js/utils/user.js"></script>
+    <script>
+        $('#btnLogin').click(function() {
+            // 获取用户名和密码
+            var myName = $('#myName').val().trim()
+            var myPassword = $('#myPassword').val().trim()
+            // console.log(myName, myPassword);
+            
+            // 判断是否为空
+            if(myName === '' || myPassword === ''){
+                // alert('不能为空');
+                $('#msgInfo').text('不能为空')
+                $('#myModal').modal('show')
+                return; 
+            }
+            // 发请求，根据返回结果，提示用户
+            // $.post(地址，参数，回调)
+            // 语义化
+            user.login(myName, myPassword,function(res){
+                console.log(res);
+                let {code,msg} = res;
+                if(code === 200){
+                    // window.alert('登陆成功')
+                    location.href= './index.html'
+                } else {
+                    // alert(res.msg)
+                    $('#msgInfo').text(msg)
+                    $('#myModal').modal('show')
+                }
+            })
+        })
+    </script>
+</body>
+
+</html>

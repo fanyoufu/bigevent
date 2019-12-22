@@ -7,13 +7,18 @@ const message = require('../utils/message')
 
 const path = require('path')
 // 导入数据
-const db = require('../utils/db')
+const db = require('../utils/article')
+const COMMENT = require('../utils/comment')
 const CATE_PATH = path.join(__dirname, '../db/category.json')
 // 导入控制器
 const categoryController = require('../controllers/category')
 
 // 文章搜索
 router.get('/search', (req, res, next) => {
+  const cateList = require(CATE_PATH)
+
+  var regx = /[\u4E00-\u9FA5\d]+/g
+
   // 参数获取
   const key = req.query.key || ''
   const type = req.query.type ? Number(req.query.type) : 0
@@ -30,7 +35,7 @@ router.get('/search', (req, res, next) => {
     const rs = []
     rs.push(it.state === '已发布')
     if (type) {
-      rs.push(it.type === type)
+      rs.push(Number(it.type) === Number(type))
     }
     if (key) {
       rs.push(it.title.includes(key))
@@ -38,12 +43,27 @@ router.get('/search', (req, res, next) => {
     return rs.every(it => it)
   })
 
-  const curArticleList = article.splice((page - 1) * perpage, perpage)
+  const curArticleList = article.reverse().splice((page - 1) * perpage, perpage)
+
+  curArticleList.map(item => {
+    let type = cateList.find(it => it.id === item.type)
+    type = type ? type.name : '未知'
+    item.type = type
+
+    var matches = []
+    var match = ''
+    do {
+      match = regx.exec(item.content)
+      matches.push(match)
+    } while (match)
+
+    item.content = matches.join().substr(0, 100) + '...'
+  })
 
   res.json({
     code: 200,
     msg: '查询成功',
-    pages: Math.ceil(article.length / perpage),
+    pages: Math.ceil(article.length / perpage) || 1,
     page,
     data: curArticleList
   })
@@ -56,7 +76,7 @@ router.post('/post_comment', (req, res) => {
   const name = req.body.name
   const content = req.body.content
 
-  const result = db.addComments({ name, content, article_id })
+  const result = COMMENT.addComments({ name, content, article_id })
   if (result) {
     res.send({
       msg: '添加评论成功',
@@ -75,7 +95,7 @@ router.get('/get_comments', (req, res) => {
   // 参数获取
   const article_id = req.query.article_id
 
-  const result = db.getComments({ article_id })
+  const result = COMMENT.getComments({ article_id })
   if (result) {
     res.send({
       msg: '获取评论成功！',
@@ -95,7 +115,7 @@ router.get('/lastest', (req, res) => {
   console.log(cateList)
   var regx = /[\u4E00-\u9FA5\d]+/g
   // 数据获取
-  const article = db.getArticle().reverse().splice(5, 5).map(it => {
+  const article = db.getArticle().slice(-5).map(it => {
     let { id, title, content, cover, type, read, comment, date } = it
     content += ''
     content = content.substr(0, 200)
@@ -130,7 +150,7 @@ router.get('/lastest', (req, res) => {
 // 分类获取
 router.get('/category', categoryController.category_search)
 router.get('/latest_comment', (req, res) => {
-  const result = db.getComments()
+  const result = COMMENT.getComments()
   res.json({
     code: 200,
     msg: '获取成功',
@@ -153,12 +173,15 @@ router.get('/article', (req, res, _next) => {
     res.json({ code: 404, msg: '没有找到' })
     return
   }
-  let { title, author, type, date, read, comment, content, prev, next } = articleList[idx]
+  let { title, author, type:type_id, date, read, comment, content, prev, next } = articleList[idx]
+  const cateList = require(CATE_PATH)
 
+  let type_name = cateList.find(it => it.id == type_id)
+  type_name = type_name ? type_name.name : '未知'
   // 增加一次阅读量
   db.editArticle({ id: id, read: 1 })
 
-  comment = db.getComments({ article_id: id }).length
+  comment = COMMENT.getComments({ article_id: id }).length
 
   if (idx > 0) {
     prev = { id: articleList[idx - 1].id, title: articleList[idx - 1].title }
@@ -170,14 +193,14 @@ router.get('/article', (req, res, _next) => {
   res.json({
     code: 200,
     data: {
-      title, author, type, date, read, comment, content, prev, next
+      title, author, type_id,type_name, date, read, comment, content, prev, next
     }
   })
 })
 
 // 获取最新的6条评论列表
 router.get('/get_latest_comments', (req, res) => {
-  const commentList = db.getComments()
+  const commentList = COMMENT.getComments()
     .sort((a, b) => Number(b.dt) - Number(a.dt))
     .splice(0, 6)
 

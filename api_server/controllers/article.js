@@ -146,7 +146,7 @@ module.exports = {
       return
     }
     // 设置封面
-    cover = config.serverAddress + `/static/articles/${req.file.filename}`
+    cover = `/static/articles/${req.file.filename}`
     // 获取文章
     if (
       article.addArticle({

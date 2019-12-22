@@ -1,8 +1,11 @@
 const fs = require('fs')
 const path = require('path')
+const config = require(path.join(__dirname, '../utils/config'))
+
 // 基地址
 const basePath = path.join(__dirname, '../db')
 // 读取数据
+
 module.exports = {
   checkisExitType (typeId) {
     const article = this.getArticle()
@@ -10,20 +13,16 @@ module.exports = {
   },
   getArticle () {
     try {
-      return JSON.parse(fs.readFileSync(path.join(basePath, 'article.json'), 'utf-8'))
+      const list = JSON.parse(fs.readFileSync(path.join(basePath, 'article.json'), 'utf-8'))
+
+      // 给封面图片补全地址
+      list.forEach(item => {
+        item.cover = item.cover.startsWith('http') ? item.cover : path.join(config.serverAddress, item.cover)
+      })
+
+      return list
     } catch (err) {
-      const article = [
-        // {
-        //   id: 1,
-        //   title: '西兰花好好吃',
-        //   content: '多次西兰花有益身心健康',
-        //   cover: 'https://ss0.baidu.com/6ONWsjip0QIZ8tyhnq/it/u=2189299806,3304117673&fm=179&app=42&f=JPEG?w=121&h=140',
-        //   type: '1',
-        //   read: '10',
-        //   comment: '10',
-        //   date: '2019-5-22'
-        // }
-      ]
+      const article = []
       fs.writeFileSync(path.join(basePath, 'article.json'), JSON.stringify(article))
       return article
     }
@@ -52,7 +51,7 @@ module.exports = {
     }
   },
   // 修改文章
-  editArticle ({ id, title, content, cover, type, isDelete, date }) {
+  editArticle ({ id, title, content, cover, type, date }) {
     const article = this.getArticle()
     const editOne = article.find(v => {
       return v.id == id
@@ -80,8 +79,6 @@ module.exports = {
       editOne.cover = cover
     }
 
-    // log(editOne);
-    // 保存
     try {
       fs.writeFileSync(path.join(basePath, 'article.json'), JSON.stringify(article))
       return true
@@ -107,7 +104,6 @@ module.exports = {
       }
     } else {
       console.log(`删除文章失败，没有这个编号${id}`)
-
       return false
     }
   }

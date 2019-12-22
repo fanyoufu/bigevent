@@ -308,6 +308,7 @@ body{
 
 .common_wrap h3{
     line-height:32px;
+    margin-top:0px;
     background-color: #f3f3f3;
     padding-left:15px;
     color:#000;

@@ -146,18 +146,6 @@
                     </li>
                 </ul>
             </div>
-            <div class="common_wrap">
-                <h3><i class="fa fa-bullseye"></i> 焦点关注</h3>
-                <ul class="content_list guanzhu_list">
-                    <li><a href="#">神奇的水滴摄影，泡泡中的世界泡泡中的世界</a></li>
-                    <li><a href="#">神奇的水滴摄影，泡泡中的世界</a></li>
-                    <li><a href="#">神奇的水滴摄影，泡泡中的世界</a></li>
-                    <li><a href="#">神奇的水滴摄影，泡泡中的世界</a></li>
-                    <li><a href="#">神奇的水滴摄影，泡泡中的世界</a></li>
-                    <li><a href="#">神奇的水滴摄影，泡泡中的世界</a></li>
-                    <li><a href="#">神奇的水滴摄影，泡泡中的世界</a></li>
-                </ul>
-            </div>
         </div>
     </div>
 
@@ -192,7 +180,11 @@
 
     <script type="text/html" id="temp_cate">
         {{each data item}}
-            <li><a href="./list.html?id={{item.id}}">{{item.name}}</a></li>
+            {{if item.cur}}
+                <li><a class="cur" href="./list.html?id={{item.id}}">{{item.name}}</a></li>
+            {{else}}
+                <li><a href="./list.html?id={{item.id}}">{{item.name}}</a></li>
+            {{/if}}
         {{/each}}
     </script>
     <script id="temp_comment" type="text/html">
@@ -222,7 +214,7 @@
         article.getDetail(id, function (res) {
             console.log(res);
             // 在文章详情数据中，res.data.type保存是类型的编号
-            var typeId = res.data.type
+            var typeId = res.data.type_id
 
             let { title, author, date, content, prev, next, read } = res.data;
 
@@ -254,12 +246,7 @@
             //  1. 先取出所有的类型数据
             //  2. 在其中找出编号与res.data.type相同的那一项，再取出它的名称
             category.show(function (result) {
-                console.log(result);
-                // 模板引擎来 渲染数据
-                var htmlStr = template("temp_cate", result);
-                console.log(htmlStr);
-                $("#left_menu").html(htmlStr)
-                $("#level_two").html('<li class="up"></li>' + htmlStr)
+                
 
                 // 接下来，就是要在result.data这个数组中，找出哪一项它的id==res.data.type？
                 var rs = result.data.find(function (item) {
@@ -270,7 +257,15 @@
                 if (rs) {
                     $('#article_type_link').text(rs.name).attr('href','./list.html?id='+typeId)
                     $('#article_type').text(rs.name)
+                    rs.cur = true
                 }
+
+                console.log(result);
+                // 模板引擎来 渲染数据
+                var htmlStr = template("temp_cate", result);
+                console.log(htmlStr);
+                $("#left_menu").html(htmlStr)
+                $("#level_two").html('<li class="up"></li>' + htmlStr)
 
             })
         })

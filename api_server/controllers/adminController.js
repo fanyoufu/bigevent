@@ -1,8 +1,7 @@
 const path = require('path')
 // 导入moment
 const moment = require('moment')
-// 导入提示
-const message = require(path.join(__dirname, '../utils/message'))
+
 // 导入配置
 const config = require(path.join(__dirname, '../utils/config'))
 // 获取用户信息
@@ -16,7 +15,6 @@ const user = require('./user')
 const article = require('./article')
 const category = require('./category')
 const comment = require('./comment')
-console.log({ ...user })
 module.exports = {
   ...user,
   ...article,

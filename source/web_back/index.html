@@ -104,13 +104,8 @@
     <script src="./js/utils/config.js"></script>
     <script src="./js/utils/user.js"></script>
     <script>
-        // $.ajax({
-        //     success:function(res){
-
-        //     }
-        // })
         // 获取并显示用户的信息
-        user.getInfo(function(res){
+        user.getInfo().then(function(res){
             // 期望是：user.getInfo只负责去发请求，取数据(不负责如何加工数据)。
             // 取数据回来传给res这个参数,并执行回调函数
             console.log(res)
@@ -124,7 +119,7 @@
         // 用户退出
         $('#btnLogout').click(function() {
             // $.post(地址，参数，回调)
-            user.logout(function(res){
+            user.logout().then(function(res){
                 console.log(res)
                 if(res.code === 200){
                     // 退出, 回到登陆页

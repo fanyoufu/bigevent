@@ -133,7 +133,7 @@
 
         // 加载并显示类别
         function getAndShow() {
-            category.show(function(res){
+            category.show().then(function(res){
             // res 就是从服务器中获取的数据
             // console.log(res);
             if(res.code === 200){
@@ -159,7 +159,7 @@
             // 获取自定义属性
             var id = $(this).attr('data-id')
             console.log(id);
-            category.del(id, res=>{
+            category.del(id).then(res=>{
                 // console.log(res);
                 let {code, msg} = res;
                 if(code === 200){
@@ -206,7 +206,7 @@
             }
             console.log(id,name,slug);
             // 发请求
-            category.edit(id,name,slug,function(res){
+            category.edit(id,name,slug).then(function(res){
                 if(res.code === 200){
                     // 修改成功
                     // 1. 重新请求，更新页面
@@ -231,7 +231,7 @@
             
             // 发请求
             // alert('add');
-            category.add(name,slug, function(res){
+            category.add(name,slug).then(function(res){
                 if(res.code === 200){
                     // 添加成功
                     // 1. 重新请求数据

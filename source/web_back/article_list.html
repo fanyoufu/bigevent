@@ -138,7 +138,7 @@
 
         // 获取数据，并展示在表格中
         function getAndShow() {
-            article.show(curPage,type,state,function(res){
+            article.show(curPage,type,state).then(function(res){
                 // 取回数据
                 // console.log(res);
                 if(res.code === 200){
@@ -212,12 +212,11 @@
             
             // 去调用 article.js中的方法，去做删除
             console.log(id);
-            article.del(id,function(res){
+            article.del(id).then(function(res){
                 if(res.code === 200){
                     // 删除成功，重新请求
                     getAndShow()
                 }
-
             })
         })
     </script>

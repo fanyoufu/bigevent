@@ -94,7 +94,7 @@
     
 
     // 2. 根据 id去求接口，获取对应文章的详情
-    article.getDetail(id,function(res){
+    article.getDetail(id).then(function(res){
         // console.log(res);
         // 当前文章所属的类别 id
         var typeId = res.data.type;

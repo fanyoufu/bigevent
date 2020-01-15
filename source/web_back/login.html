@@ -72,7 +72,7 @@
             // 发请求，根据返回结果，提示用户
             // $.post(地址，参数，回调)
             // 语义化
-            user.login(myName, myPassword,function(res){
+            user.login(myName, myPassword).then(function(res){
                 console.log(res);
                 let {code,msg} = res;
                 if(code === 200){

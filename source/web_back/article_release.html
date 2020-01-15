@@ -95,7 +95,7 @@
         // 显示文章类别
         // 1. 发请求，拿数据
         // 2. 模板引擎，显示数据
-        category.show(function(res){
+        category.show().then(function(res){
             // console.log((res));
             // res = {
             //     code: 200,
@@ -142,7 +142,7 @@
 
             // 发请求，调用接口.
             // 在article.js中准备一个添加文章的方法
-            article.add(fd, function(res){
+            article.add(fd).then(function(res){
                 console.log(res);
                 if(res.code === 201){
                     if( confirm("添加成功，是否继续添加？") ){

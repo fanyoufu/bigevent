@@ -30,7 +30,10 @@ module.exports = {
 
   // 添加文章
   addArticle ({ title, content, cover, type, date, state = '草稿' }) {
-    const article = this.getArticle()
+    const list = JSON.parse(fs.readFileSync(path.join(basePath, 'article.json'), 'utf-8'))
+    const article = list
+
+    // const article = this.getArticle()
     article.push({
       id: Date.now(),
       title,

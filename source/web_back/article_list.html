@@ -115,14 +115,12 @@
 
     <script>
         // 初始化 文章分类下拉列表
-        category.show(function(res){
+        category.show().then(function(res){
             console.log(res);
             // 模板引擎，渲染数据
             var htmlStr = template('temp_cate',res);
             console.log(htmlStr);
             $('#selCategory').html(htmlStr)
-            
-            
         })
         // selCategory
     </script>

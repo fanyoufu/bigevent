@@ -211,7 +211,7 @@
         var id = location.search.substr(4);
         // alert(id)
         // 2. 根据id去请求文章详情，并显示
-        article.getDetail(id, function (res) {
+        article.getDetail(id).then(function (res) {
             console.log(res);
             // 在文章详情数据中，res.data.type保存是类型的编号
             var typeId = res.data.type_id
@@ -245,7 +245,7 @@
             // 思路： 
             //  1. 先取出所有的类型数据
             //  2. 在其中找出编号与res.data.type相同的那一项，再取出它的名称
-            category.show(function (result) {
+            category.show().then(function (result) {
                 
 
                 // 接下来，就是要在result.data这个数组中，找出哪一项它的id==res.data.type？
@@ -282,7 +282,7 @@
                 return;
             }
             // 3. 调用方法，添加 
-            comment.add(name, content, id, function (res) {
+            comment.add(name, content, id).then( function (res) {
                 console.log(res);
                 var { code } = res;// let code = res.code
                 if (code === 200) {
@@ -297,7 +297,7 @@
 
         // 获取评论
         function getAndShow() {
-            comment.get(id, function (res) {
+            comment.get(id).then(function (res) {
                 console.log(res.data);
                 res.data.reverse()
                 // 对于所有的评论数据，给每一条数据中额外添加一个相对时间的属性

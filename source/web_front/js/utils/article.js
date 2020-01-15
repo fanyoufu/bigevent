@@ -2,52 +2,32 @@
 var article = {
     
     // 获取主页中的焦点图
-    getFiveFocus: function(callback){
-        $.get(APIURLS.article_search,
+    getFiveFocus: function(){
+        return $.get(APIURLS.article_search,
             {
                 perpage: 5,
                 state: '已发布'
-            },
-            function(res){
-            callback(res)
-        })
+            })
     },
     // 获取文章详情
-    getDetail: function(id, callback){
-        $.get(APIURLS.article_detail,
-            {id},
-            function(res){
-                callback(res)
-            }
-        )
+    getDetail: function(id){
+        return $.get(APIURLS.article_detail,{id})
     },
     
     // 最新资讯
-    getLastest: function(callback){
-        $.get(APIURLS.article_lastest,
-            function(res){
-                callback(res)
-            }
-        )
+    getLastest: function(){
+        return $.get(APIURLS.article_lastest)
     },
 
     // 列表页 
-    getList: function({type,page},callback){
-        $.get(APIURLS.article_search,
+    getList: function({type,page}){
+        return $.get(APIURLS.article_search,
             {
                 type, page
-            },
-            function(res){
-                callback(res)
             }
         )
     },
-    getRank: function({type},callback){
-        $.get(APIURLS.article_rank,
-            {type},
-            function(res){
-                callback(res)
-            }
-        )
-    },
+    getRank: function({type}={}){
+        return $.get(APIURLS.article_rank,{type})
+    }
 }

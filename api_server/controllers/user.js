@@ -1,4 +1,6 @@
 const path = require('path')
+var urljoin = require('url-join')
+
 const db = require(path.join(__dirname, '../utils/db'))
 const config = require(path.join(__dirname, '../utils/config'))
 const jwt = require('jsonwebtoken')
@@ -39,7 +41,9 @@ module.exports = {
   // 获取用户信息
   getuser (req, res) {
     let { nickname, user_pic } = db.getUser()
-    user_pic = path.join( config.serverAddress, user_pic)
+    // user_pic = path.join( config.serverAddress, user_pic)
+    user_pic = urljoin( config.serverAddress, user_pic)
+    
     // 获取用户信息
     res.send({
       msg: '获取成功',

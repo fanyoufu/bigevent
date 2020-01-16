@@ -66,9 +66,10 @@ app.use('/', frontRouter)
 // 注册后台路由
 app.use('/admin', adminRouter)
 
-app.use((err, req, res) => {
-  console.log(err)
-  res.json({ code: 500, err })
+app.use(function(err, req, res,next){
+  console.error(err.stack)
+  res.status(500).send('出错')
+  // res.send({ code: 500, err })
 })
 // 开启监听
 app.listen(8000, () => {

@@ -488,6 +488,9 @@ body{
     color:#666;
     text-indent:28px;
 }
+.article_con p img {
+    width:100%;
+}
 
 .article_links{
     font-size:12px;

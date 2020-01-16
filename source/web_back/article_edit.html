@@ -105,7 +105,7 @@
         $('#rich_content').val(res.data.content)
 
         // 3.1 显示文章类型
-        category.show(function(result){
+        category.show().then(function(result){
             var htmlStr = template('temp_cate', result)
             console.log(htmlStr);
             $('#categoryContainer').html(htmlStr)

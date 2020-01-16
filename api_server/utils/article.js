@@ -1,5 +1,6 @@
 const fs = require('fs')
 const path = require('path')
+var urljoin = require('url-join')
 const config = require(path.join(__dirname, '../utils/config'))
 
 // 基地址
@@ -17,7 +18,7 @@ module.exports = {
 
       // 给封面图片补全地址
       list.forEach(item => {
-        item.cover = item.cover.startsWith('http') ? item.cover : path.join(config.serverAddress, item.cover)
+        item.cover = item.cover.startsWith('http') ? item.cover :urljoin(config.serverAddress, item.cover)
       })
 
       return list
@@ -55,7 +56,8 @@ module.exports = {
   },
   // 修改文章
   editArticle ({ id, title, content, cover, type, date }) {
-    const article = this.getArticle()
+    const list = JSON.parse(fs.readFileSync(path.join(basePath, 'article.json'), 'utf-8'))
+    const article = list
     const editOne = article.find(v => {
       return v.id == id
     })
@@ -92,7 +94,9 @@ module.exports = {
 
   // 删除文章
   del (id) {
-    const articles = this.getArticle()
+    // const articles = this.getArticle()
+    const list = JSON.parse(fs.readFileSync(path.join(basePath, 'article.json'), 'utf-8'))
+    const articles = list
     const idx = articles.findIndex(v => {
       return Number(v.id) === Number(id)
     })

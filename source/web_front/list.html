@@ -194,7 +194,7 @@
             var id = location.search.substr(4);
 
             function getAndShow() {
-                article.getList({ type: id, page: curPage }, function (res) {
+                article.getList({ type: id, page: curPage }).then(function (res) {
                     if (res.code === 200) {
                         var htmlStr = template('temp_list', res)
                         console.log(htmlStr);
@@ -236,7 +236,7 @@
             })
 
             // // 获取文章类别，并显示
-            category.show(res=>{
+            category.show().then(res=>{
                 if(res.code === 200){
                     // 模板引擎来 渲染数据
                     res.cur = id

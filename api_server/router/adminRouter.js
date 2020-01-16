@@ -36,7 +36,7 @@ router.get('/search', adminController.search)
 // 文章发布
 router.post('/article_publish', upload.single('cover'), adminController.article_publish)
 router.post('/submit_image', uploadImage.single('file'), function(req, res) {
-  console.log(req.file)
+  // console.log(req.file)
   res.json({ url: '/static/' + req.file })
 })
 // 文章修改

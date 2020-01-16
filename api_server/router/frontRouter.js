@@ -112,7 +112,7 @@ router.get('/get_comments', (req, res) => {
 
 router.get('/lastest', (req, res) => {
   const cateList = require(CATE_PATH)
-  console.log(cateList)
+  // console.log(cateList)
   var regx = /[\u4E00-\u9FA5\d]+/g
   // 数据获取
   const article = db.getArticle().slice(-5).map(it => {
